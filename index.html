@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="manifest.json">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load',()=>{
+        navigator.serviceWorker.registrer('service-worker.js')
+        .then(reg => console.log('Service Worker registrado', reg))
+        .catch(erro => console.log('Error al registrar el Service Worker', err));
+      });
+    }
+  </script>
+  <style>
+    .seccion {
+      display: none;
+    }
+    #inicio {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg custom-navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="cata.jpg" height="50px" width="50px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#historia">Historia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#proyectos">Proyectos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sobre mí
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#habilidades">Habilidades</a></li>
+              <li><a class="dropdown-item" href="#objetivos">Objetivos</a></li>
+              <li><a class="dropdown-item" href="#personal">Algo más personal</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- INICIO -->
+  <section id="inicio" class="container mt-4 seccion">
+    <h1>Hola soy Sher</h1>
+    <p>Bienvenido a mi portafolio. Aquí podrás conocer un poco más sobre mí, mi formación como estudiante de Ingeniería en Sistemas Computacionales y algunos proyectos que he desarrollado en esta área.</p>
+  </section>
+
+  <!-- HISTORIA -->
+  <section id="historia" class="container mt-4 seccion">
+    <h2>Mi Historia</h2>
+    <p>Soy estudiante de Ingeniería en Sistemas Computacionales. Elegí esta carrera porque me apasiona la tecnología, la programación y cómo se pueden crear soluciones digitales para facilitar la vida de las personas.  
+    Durante los cuatrimestres he aprendido sobre desarrollo web, bases de datos, redes, estructuras de datos y lenguajes de programación como Java, C++ y JavaScript.</p>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="container mt-4 seccion">
+    <h2>Proyectos</h2>
+    <ul>
+      <li>Desarrollo de una página web con HTML, CSS y JavaScript.</li>
+      <li>Creación de una base de datos para control de inventario.</li>
+      <li>Programas en Java para resolver problemas lógicos.</li>
+      <li>Aplicaciones móviles usando MIT App Inventor.</li>
+      <li>Simulación de redes con Cisco Packet Tracer.</li>
+    </ul>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="container mt-4 seccion">
+    <h2>Habilidades</h2>
+    <ul>
+      <li>Lenguajes de programación: Java, C++, JavaScript.</li>
+      <li>Desarrollo web: HTML, CSS, JS.</li>
+      <li>Manejo de bases de datos (MySQL).</li>
+      <li>Uso de herramientas como VS Code, Git y App Inventor.</li>
+      <li>Trabajo en equipo y solución de problemas.</li>
+    </ul>
+  </section>
+
+  <!-- OBJETIVOS -->
+  <section id="objetivos" class="container mt-4 seccion">
+    <h2>Objetivos</h2>
+    <ul>
+      <li>Terminar mi carrera y especializarme en desarrollo de software.</li>
+      <li>Crear proyectos útiles y funcionales para resolver problemas reales.</li>
+      <li>Trabajar en una empresa de tecnología o emprender mi propio proyecto.</li>
+    </ul>
+  </section>
+
+  <!-- PERSONAL -->
+  <section id="personal" class="container mt-4 mb-4 seccion">
+    <h2>Algo más personal</h2>
+    <ul>
+      <li>Me gusta aprender por mi cuenta y hacer cursos en línea.</li>
+      <li>Soy responsable, creativa y siempre busco mejorar.</li>
+      <li>Me interesa el diseño web, las apps móviles y la inteligencia artificial.</li>
+    </ul>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll("a.nav-link, a.dropdown-item");
+      const secciones = document.querySelectorAll(".seccion");
+
+      links.forEach(link => {
+        link.addEventListener("click", (e) => {
+          const id = link.getAttribute("href").substring(1);
+          secciones.forEach(sec => sec.style.display = "none");
+          const activa = document.getElementById(id);
+          if (activa) activa.style.display = "block";
+
+          const navbar = document.querySelector(".navbar-collapse");
+          if (navbar.classList.contains("show")) {
+            new bootstrap.Collapse(navbar).toggle();
+          }
+
+          e.preventDefault();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
